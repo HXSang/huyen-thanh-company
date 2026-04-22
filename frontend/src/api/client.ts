@@ -63,8 +63,7 @@ export function downloadBlob(blob: Blob, filename: string) {
 export const saveQuoteData = async (data: QuoteData) => {
   const token = localStorage.getItem("token");
   if (!token) throw new Error("Chưa đăng nhập! Thẻ ra vào không hợp lệ.");
-
-  const res = await axios.post("http://localhost:8000/api/don-hang/luu-bao-gia", data, {
+  const res = await axios.post(`${BASE}/api/don-hang/luu-bao-gia`, data, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
