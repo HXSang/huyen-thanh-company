@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  @page { size: A4; margin: 15mm 10mm; }
+
+  body { font-family: 'Times New Roman', Times, serif; color: #000; line-height: 1.2; }
+
+  @media screen {
+    body { background: #525659; display: flex; justify-content: center; padding: 20px; }
+    .page { background: #fff; width: 210mm; min-height: 297mm; padding: 15mm 10mm; box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+  }
+
+  .header-container {
+    width: 100%;
+    border-bottom: 2pt solid #000; 
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    position: relative;
+    width: 100%;
+  }
+
+  .header-left {
+    position: relative;
+    flex: 1;
+  }
+
+  .stamp {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 20px;
+    top: -10px; 
+    z-index: 99; 
+    pointer-events: none;
+  }
+
+  .company-info {
+    position: relative;
+    z-index: 1; 
+    padding-top: 5pt; 
+  }
+
+  .company-name {
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 4pt;
+  }
+
+  .company-detail {
+    font-size: 11pt;
+    margin-bottom: 2pt;
+  }
+
+  .logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+  }
+  .title {
+    text-align: center;
+    font-size: 23pt;
+    font-weight: bold;
+    margin-top: -14pt;
+  }
+  .customer-info { 
+    font-size: 11pt; 
+    margin-top: 10pt; 
+  }
+   .customer-info p { 
+    margin-bottom: 3pt; 
+  }
+  .greeting-block {
+    margin-top: 8pt;
+  }
+
+  .quotation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5pt;
+    font-size: 10.5pt;
+    color: #000;
+  }
+
+  .quotation-table th{
+    border: 1px solid #000;
+    padding: 4px 4px;
+    vertical-align: middle;
+    text-align: center;         
+  }
+  .quotation-table td {
+    border: 1px solid #000;
+    padding: 2px 2px;           
+    vertical-align: middle;
+    text-align: center;
+  }
+  .quotation-table th {
+    background-color: #538dd4;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 11pt;
+  }
+
+  .quotation-table td {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .quotation-table .col-name { width: 38%; }
+  .quotation-table .col-price { width: 11%; }
+  .quotation-table .col-amount { width: 13%; }
+
+  .quotation-table tr.total-row td {
+    font-weight: bold;
+  }
+
+  .quotation-table .red-text {
+    color: #ff0000;
+  }
+
+  .quotation-table .grand-total {
+    background-color: #0070c0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 11.5pt;
+  }
+
+  .quotation-table tr.total-row td,
+  .quotation-table tr.grand-total td {
+    padding: 1px 4px !important;     
+    line-height: 1.05;
+    font-size: 11.5pt;
+  }
+  .quotation-table td.col-name {
+    text-align: left !important;    
+    padding: 2px 1px !important;     
+    padding-left: 1px !important;    
+  }
+
+  .quotation-table tr.total-row td,
+  .quotation-table tr.grand-total td {
+    padding: 0 !important;
+    line-height: 1.05;
+  }
+
+  .conditions-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20pt;
+    margin-top: 6pt;
+    width: 100%;
+  }
+
+  .condition-box,
+  .confirmation-box,
+  .payment-box {
+    border: 2pt solid #0070c0;
+    border-radius: 18pt;
+    padding: 4pt 4pt;
+    font-size: 10.5pt;
+  }
+
+  .condition-box {
+    flex: 2.1;
+  }
+
+  .confirmation-box {
+    flex: 1;
+    min-height: 12pt; 
+    display: flex;
+    flex-direction: column;
+  }
+
+  .payment-box {
+    width: 80%;
+    margin-top: 6pt;
+  }
+
+  .box-title {
+    font-size: 10pt;
+    font-weight: bold;
+    margin-bottom: 2pt;
+    display: block;
+  }
+
+  .box-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .box-list li {
+    margin-bottom: 4pt;
+    padding-left: 1pt;
+  }
+
+  .box-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .signer-section {
+    margin-top: 15pt;
+    text-align: right;
+    width: 100%;
+  }
+
+  .signer-wrapper {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 12pt;
+    text-align: left;
+  }
+
+  .smiley {
+    font-size: 20pt;
+    line-height: 1;
+    color: #0070c0;
+    margin-top: -4pt;
+  }
+
+  .signer-text {
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  .signer-text .red-text {
+    color: #ff0000;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-container">
+    
+    <div class="header-top">
+      <div class="header-left">
+        <img class="stamp" src="img/stamp.png" alt="Con dấu"/>
+        
+        <div class="company-info">
+          <div class="company-name">CÔNG TY CỔ PHẦN THƯƠNG MẠI THIẾT BỊ CÔNG NGHIỆP HUYỀN THANH</div>
+          <div class="company-detail">Số 49 Lê Văn Khương Tổ 27, Ấp 5, Xã Đông Thạnh, TP. Hồ Chí Minh, Việt Nam</div>
+          <div class="company-detail" style="margin-top: 10pt;">TEL: 0399836279 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: huyenthanh.7999@gmail.com</div>
+        </div>
+      </div>
+      
+      <img class="logo" src="img/logo.png" alt="Logo"/>
+    </div>
+
+    <div class="title">BẢNG BÁO GIÁ</div>
+
+  </div> 
+  
+  <div class="customer-info">
+    <p>Kính gửi: <strong style="color: red;" >Mr. Giang - CHI NHÁNH CÔNG TY CỔ PHẦN CÀ PHÊ HÒA TAN TRUNG NGUYÊN TẠI BẮC GIANG </strong></p>
+    <p>Điện thoại: <strong style="color: red;">0325217127</strong></p>
+    <p>Địa chỉ: <strong style="color: red;">Lô B(B2), Khu công nghiệp Quang Châu, P. Quang Châu, Thị xã Việt Yên, Tỉnh Bắc Giang, Việt Nam</strong></p>
+    
+    <div class="greeting-block">
+        <p>Công ty <strong>Huyền Thanh</strong> xin gửi tới Quý khách hàng lời chào trân trọng và hợp tác. Chúng tôi xin gửi tới Quý Khách hàng bảng báo giá sản phẩm như sau:</p>
+    </div>
+  </div>
+
+  <table class="quotation-table">
+    <thead>
+      <tr>
+        <th class="col-stt">STT</th>
+        <th class="col-name">Tên hàng - Quy cách - Model</th>
+        <th class="col-unit">Đơn vị</th>
+        <th class="col-qty">Số lượng</th>
+        <th class="col-price">Đơn giá</th>
+        <th class="col-amount">Thành tiền</th>
+        <th class="col-vat">VAT</th>
+        <th class="col-note">Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-stt">1</td>
+        <td class="col-name">Gia công làm mới dẫn hướng dao cắt máy Volpack, Mespack</td>
+        <td class="col-unit">Cái</td>
+        <td class="col-qty">15</td>
+        <td class="col-price">20.000</td>
+        <td class="col-amount">300.000</td>
+        <td class="col-vat">10%</td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr>
+        <td class="col-stt">2</td>
+        <td class="col-name">Mũi khoan HSS phi 16 <span class="red-text">(Mũi Khoan Thép PSD FCT HSSCo5 D16)</span></td>
+        <td class="col-unit">Cái</td>
+        <td class="col-qty">3</td>
+        <td class="col-price">550.000</td>
+        <td class="col-amount">1.650.000</td>
+        <td class="col-vat">10%</td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr>
+        <td class="col-stt">3</td>
+        <td class="col-name">Mũi khoan HSS phi 20 <span class="red-text">(Mũi Khoan Thép PSD FCT HSSCo5 D20)</span></td>
+        <td class="col-unit">Cái</td>
+        <td class="col-qty">3</td>
+        <td class="col-price">1.100.000</td>
+        <td class="col-amount">3.300.000</td>
+        <td class="col-vat">10%</td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr>
+        <td class="col-stt">4</td>
+        <td class="col-name">Nối hơi nhanh phi 8- phi 6 <span class="red-text">(Đầu Nối Giảm Thẳng Khí Nén Phi 8 - 6 mm Đen Airtac PG8-6D)</span></td>
+        <td class="col-unit">Cái</td>
+        <td class="col-qty">50</td>
+        <td class="col-price">20.000</td>
+        <td class="col-amount">1.000.000</td>
+        <td class="col-vat">8%</td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr>
+        <td class="col-stt">5</td>
+        <td class="col-name">Nối hơi nhanh phi 6- phi 6 <span class="red-text">(Đầu Nối Khí Thẳng OD6 mm Đen Airtac)</span></td>
+        <td class="col-unit">Cái</td>
+        <td class="col-qty">50</td>
+        <td class="col-price">16.000</td>
+        <td class="col-amount">800.000</td>
+        <td class="col-vat">8%</td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr class="total-row">
+        <td colspan="5" style="text-align: center; font-weight: bold;font-size: 10.5pt;">TỔNG CỘNG</td>
+        <td class="col-amount" style="text-align: center; font-weight: bold;">7.050.000</td>
+        <td class="col-vat"></td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr class="total-row">
+        <td colspan="5" style="text-align: center;">VAT 10%</td>
+        <td class="col-amount red-text" style="text-align: center; font-weight: bold;">495.000</td>
+        <td class="col-vat"></td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr class="total-row">
+        <td colspan="5" style="text-align: center;">VAT 8%</td>
+        <td class="col-amount red-text" style="text-align: center; font-weight: bold;">144.000</td>
+        <td class="col-vat"></td>
+        <td class="col-note"></td>
+      </tr>
+
+      <tr class="grand-total">
+        <td colspan="5" style="text-align: center;">TỔNG TIỀN THANH TOÁN</td>
+        <td class="col-amount" style="text-align: center;">7.689.000</td>
+        <td class="col-vat"></td>
+        <td class="col-note"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="conditions-container">
+    <div class="condition-box">
+      <span class="box-title">◎ Điều kiện thương mại</span>
+      <ul class="box-list">
+        <li>- Tổng giá trị thanh toán đã bao gồm thuế GTGT <span class="red-text">8%, 10%</span></li>
+        <li>- Hàng mới 100% chính hãng chưa qua sử dụng</li>
+        <li>- Báo giá có hiệu lực trong vòng 15 ngày kể từ ngày báo giá</li>
+      </ul>
+    </div>
+    <div class="confirmation-box">
+      <span class="box-title">◎ Xác nhận đặt hàng</span>
+    </div>
+  </div>
+
+  <div class="payment-box">
+    <span class="box-title">◎ Điều khoản &amp; phương thức thanh toán</span>
+    <ul class="box-list">
+      <li>- Thanh toán 100% tổng giá trị đơn hàng bằng tiền mặt hoặc hình thức chuyển khoản</li>
+      <li>- Thông tin Ngân hàng: <b>CÔNG TY CỔ PHẦN THƯƠNG MẠI THIẾT BỊ CÔNG NGHIỆP HUYỀN THANH</b></li>
+      <li>- Số tài khoản: <b>226418</b></li>
+      <li>- Ngân hàng: <b>ACB - PGD Lê Văn Khương</b></li>
+    </ul>
+  </div>
+
+  <div class="signer-section">
+    <div class="signer-wrapper">
+      <div class="smiley">😊</div>
+      <div class="signer-text">
+        TP.HCM Ngày <span class="red-text">30</span> Tháng <span class="red-text">12</span> Năm 2025<br>
+        Người lập báo giá<br>
+        <strong>Hoàng Đức - Hotline: <span class="red-text">0399836279</span></strong>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

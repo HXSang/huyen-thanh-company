@@ -1,0 +1,172 @@
+/* ── Nền trang ───────────────────────────────────────── */
+.login-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  /* Nếu thích có lưới mờ giống Landing page thì bật 2 dòng dưới lên */
+  /* background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px; */
+  font-family: 'Be Vietnam Pro', sans-serif;
+  padding: 20px;
+}
+
+/* ── Thẻ Card trung tâm ──────────────────────────────── */
+.login-card-modern {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 48px 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header Card ─────────────────────────────────────── */
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.login-logo {
+  height: 40px;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
+.login-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.login-header p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ── Form Inputs ─────────────────────────────────────── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.input-group input {
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+/* Hiệu ứng viền sáng lên khi click vào ô nhập */
+.input-group input:focus {
+  border-color: #007CF0;
+  box-shadow: 0 0 0 3px rgba(0, 124, 240, 0.15);
+}
+
+.input-group input:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ── Thông báo lỗi (Thay cho Alert) ──────────────────── */
+.login-error {
+  background: #fef2f2;
+  color: #b91c1c;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #fecaca;
+  text-align: center;
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* ── Nút Submit ──────────────────────────────────────── */
+.btn-submit {
+  margin-top: 8px;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-submit:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Vòng xoay Loading nhỏ gọn */
+.spinner-small {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Footer ──────────────────────────────────────────── */
+.login-footer {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+
+.btn-text:hover {
+  color: #111;
+}

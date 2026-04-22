@@ -1,0 +1,321 @@
+
+.lp-root {
+  min-height: 100vh;
+  background: #fafafa;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.lp-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.lp-grid::before {
+  content: '+';
+  position: absolute;
+  top: 104px;
+  left: 180px;
+  font-size: 18px;
+  color: rgba(0,0,0,0.2);
+  line-height: 1;
+  font-weight: 300;
+}
+
+.lp-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,120,70,0.18) 0%,
+    rgba(60,200,150,0.14) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lp-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: rgba(250,250,250,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lp-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lp-logo-mark {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.lp-brand {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #111;
+}
+
+.lp-nav-center {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lp-nav-link {
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.lp-nav-link:hover {
+  background: rgba(0,0,0,0.05);
+  color: #111;
+}
+
+.lp-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.lp-btn-ghost {
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  border: none;
+  background: transparent;
+  color: #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.lp-btn-ghost:hover { background: rgba(0,0,0,0.05); color: #111; }
+
+.lp-btn-dark {
+  padding: 7px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  border: none;
+  background: #111;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, transform 0.1s;
+}
+.lp-btn-dark:hover { background: #000; transform: translateY(-1px); }
+
+.lp-btn-outline {
+  padding: 7px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  background: #fff;
+  color: #111;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+.lp-btn-outline:hover {
+  border-color: rgba(0,0,0,0.35);
+  background: #fafafa;
+  transform: translateY(-1px);
+}
+
+.lp-btn-lg {
+  padding: 13px 28px !important;
+  font-size: 15px !important;
+  border-radius: 999px !important;
+}
+
+.lp-btn-icon {
+  font-size: 12px;
+}
+
+.lp-hero {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 24px 0;
+  gap: 24px;
+  animation: lp-fadeup 0.6s ease both;
+}
+
+@keyframes lp-fadeup {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.lp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.03em;
+}
+
+.lp-hero-title {
+  font-size: clamp(40px, 6vw, 68px); 
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15; 
+  color: #111;
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+.lp-hero-muted {
+  background-image: linear-gradient(90deg, #007CF0 0%, #00DFD8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  padding-right: 4px;
+  padding-bottom: 8px; 
+}
+
+.lp-hero {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 100px 24px 0;
+  gap: 20px;
+}
+
+.lp-hero-sub {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0;
+}
+
+.lp-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+  margin-top: 12px;
+}
+
+.lp-triangle-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 340px;
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.lp-triangle-outer {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+.lp-triangle-inner {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: calc(170px - var(--i) * 8px) solid transparent;
+  border-right: calc(170px - var(--i) * 8px) solid transparent;
+  border-bottom: calc(290px - var(--i) * 14px) solid transparent;
+  border-bottom-color: rgba(0,0,0,calc(0.04 + var(--i) * 0.005));
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .lp-nav { padding: 0 20px; }
+  .lp-nav-center { display: none; }
+  .lp-hero { padding: 60px 20px 0; }
+  .lp-hero-title { font-size: 40px; }
+  .lp-hero-sub { font-size: 14px; }
+  .lp-hero-actions { flex-direction: column; width: 100%; }
+  .lp-btn-lg { width: 100%; justify-content: center; }
+}
+
+.lp-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/background.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2; 
+}
+
+.lp-logo-img {
+  height: 32px; 
+  width: auto;
+  object-fit: contain;
+}
+
+.lp-btn-icon-img {
+  height: 16px; 
+  width: auto;
+  object-fit: contain;
+  margin-right: 6px;
+  filter: brightness(0) invert(1); 
+}
+.lp-canvas-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none; 
+}
