@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE } from '../api/client'; 
 import '../layouts/LoginPage.css'; 
 
 export default function LoginPage() {
@@ -20,7 +21,7 @@ export default function LoginPage() {
     formData.append('password', password);
 
     try {
-      const res = await axios.post('http://localhost:8000/login', formData);
+      const res = await axios.post(`${BASE}/login`, formData);
       localStorage.setItem('token', res.data.access_token);
       navigate('/dashboard'); 
     } catch (err) {

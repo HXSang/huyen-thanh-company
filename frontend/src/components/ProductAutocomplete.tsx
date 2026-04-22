@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { Item } from "../api/client";
+import { Item, BASE } from "../api/client";
 
 interface Props {
   value: string;
@@ -34,7 +34,7 @@ export function ProductAutocomplete({ value, onSelect, onChange }: Props) {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:8000/api/san-pham/search?q=${searchTerm}`, {
+      const res = await axios.get(`${BASE}/api/san-pham/search?q=${searchTerm}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSuggestions(res.data);
