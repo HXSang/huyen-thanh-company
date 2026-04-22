@@ -11,7 +11,7 @@ interface NumericInputProps {
 export function NumericInput({
   value,
   onChange,
-  min = 0,
+  min: _min = 0,
   className,
   placeholder,
 }: NumericInputProps) {
