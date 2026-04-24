@@ -3,10 +3,9 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 3000,
-    proxy: {
-      "/api": "http://localhost:8000",   // dev: forward sang FastAPI
-    },
-  },
+  // server: {          // ← comment hết block này
+  //   proxy: {
+  //     "/api": "http://localhost:8000",
+  //   },
+  // },
 });
