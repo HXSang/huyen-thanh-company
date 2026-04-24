@@ -39,6 +39,9 @@ async def extract(file: UploadFile = File(...)):
         item.setdefault("vat", 0.08)
         item.setdefault("ghi_chu", "")
         item.setdefault("dvt", "Cái")
+        item.setdefault("gia_goc", 0)
+        item.setdefault("ncc", "")
+        item.setdefault("phi_van_chuyen", 0)
 
     return result
 
