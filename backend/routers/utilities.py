@@ -15,13 +15,25 @@ router = APIRouter(tags=["Tiện ích"])
 async def extract(file: UploadFile = File(...)):
     allowed = {"png", "jpg", "jpeg", "xlsx", "xls", "csv", "docx"}
     ext = file.filename.split(".")[-1].lower()
+    
+    logger.info(f"File nhận được: {file.filename}, ext: {ext}, size: {file.size}")
+    
     if ext not in allowed:
         raise HTTPException(400, f"File type .{ext} không được hỗ trợ")
 
     file_bytes = await file.read()
-    result = extract_data_from_file(file_bytes, file.filename)
+    logger.info(f"Đọc file xong, bytes: {len(file_bytes)}")
+
+    try:
+        result = extract_data_from_file(file_bytes, file.filename)
+        logger.info(f"AI trả về: {result}")  # ← Xem AI trả về gì
+    except Exception as e:
+        logger.error(f"Lỗi trong extract_data_from_file: {e}")
+        logger.error(traceback.format_exc())  # In full stack trace
+        raise HTTPException(500, f"Lỗi xử lý: {str(e)}")
 
     if not result:
+        logger.warning("result rỗng hoặc None")
         raise HTTPException(422, "AI không đọc được file này")
 
     # Chuẩn hóa an toàn
