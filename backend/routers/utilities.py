@@ -8,6 +8,10 @@ from engine.excel_raw_exporter import export_raw_excel
 from engine.drive_service import upload_excel_to_drive # <--- Kéo hàm đẩy Drive vào
 from schemas.don_hang import QuoteRequest
 from dependencies import get_current_user 
+import logging
+import traceback
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["Tiện ích"])
 
