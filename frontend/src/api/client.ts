@@ -1,7 +1,11 @@
 import axios from "axios";
 
-const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? "http://localhost:8000",
+// 1. Khai báo và EXPORT biến BASE ra để dập lỗi 
+export const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+
+// 2. Gắn thẳng biến BASE vào cái axios config. Tiện tay export luôn cái API phòng hờ.
+export const API = axios.create({
+  baseURL: BASE,
   headers: { "Content-Type": "application/json" },
 });
 
