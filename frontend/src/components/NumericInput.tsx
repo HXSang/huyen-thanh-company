@@ -17,7 +17,7 @@ export function NumericInput({
 }: NumericInputProps) {
   // Format số thành chuỗi có dấu "." mỗi 3 chữ số (kiểu Việt Nam)
   const format = (n: number) =>
-    n === 0 ? "" : n.toLocaleString("vi-VN");
+    n === 0 ? "" : n.toLocaleString("vi-VN") ?? "0";
 
   const [display, setDisplay] = useState(format(value));
 
