@@ -215,14 +215,22 @@ section h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; lette
 
 /* Column widths */
 .col-stt   { width: 40px; }
-.col-name  { min-width: 220px; max-width: 280px; }
+.col-name  { min-width: 200px; max-width: 260px; }
 .col-unit  { width: 64px; }
 .col-qty   { width: 80px; }
-.col-price { width: 120px; }
-.col-amount{ width: 130px; }
+.col-price { width: 110px; }
+.col-amount{ width: 120px; }
 .col-vat   { width: 70px; }
-.col-note  { width: 120px; }
+.col-note  { width: 100px; }
 .col-del   { width: 36px; }
+.col-gia-goc { width: 110px; }
+.col-ncc     { min-width: 120px; max-width: 160px; }
+.col-phi-vc  { width: 100px; }
+
+/* Ẩn spinner trên input[type=number] */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance: textfield; }
 
 .btn-del {
   background: none;
@@ -365,15 +373,14 @@ section h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; lette
   position: sticky;
   bottom: 0;
   z-index: 100;
-  background: var(--gray-100); /* Trùng màu nền của body để mượt */
-  padding: 16px 0;
+  background: var(--gray-100);
+  padding: 12px 0;
   margin-top: 16px;
   display: flex;
   align-items: stretch;
-  gap: 24px;
+  gap: 16px;
 }
 
-/* Đảm bảo border radius và màu nền cho khối sticky để che phần text cuộn bên dưới */
 .sticky-action-bar::before {
   content: "";
   position: absolute;
@@ -386,15 +393,67 @@ section h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; lette
   flex: 1;
 }
 
+/* Thu gọn summary items trong action bar */
+.sticky-summary .summary-bar {
+  gap: 8px;
+}
+
+.sticky-summary .summary-item {
+  padding: 8px 12px;
+}
+
+.sticky-summary .summary-item .label {
+  font-size: 10px;
+}
+
+.sticky-summary .summary-item .value {
+  font-size: 16px;
+}
+
+/* ── Nhóm nút hành động ──────────────────────────── */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: stretch;
+  align-self: stretch;
+}
+
 .sticky-action-bar .btn-export {
-  /* Cho nút cao bằng với khối tổng tiền */
-  height: auto; 
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 32px;
-  font-size: 16px;
+  padding: 0 24px;
+  font-size: 14px;
+  white-space: nowrap;
+  min-height: 0;
+  height: auto;
 }
+
+/* ── Nút Xuất SO Nội Bộ (vàng) ───────────────────── */
+.btn-export-so {
+  flex: 1;
+  background: #f59e0b;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0 24px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+  letter-spacing: .02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-height: 0;
+  height: auto;
+}
+.btn-export-so:hover:not(:disabled) { background: #d97706; transform: translateY(-1px); }
+.btn-export-so:disabled { background: var(--gray-400); cursor: not-allowed; }
 /* Vercel Style Add-on */
 .landing-container { background: #fff; min-height: 100vh; position: relative; }
 .grid-bg {
